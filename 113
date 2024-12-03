@@ -1,0 +1,23 @@
+import qrcode
+
+# داده‌ای که می‌خواهید کدگذاری کنید
+data = "https://www.example.com"
+
+# ایجاد یک شی QRCode
+qr = qrcode.QRCode(
+    version=1,  # تعیین اندازه QR کد
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,  # اندازه هر جعبه در شبکه QR کد
+    border=4,  # ضخامت حاشیه (حداقل ۴ است)
+)
+
+# افزودن داده‌ها به QR کد
+qr.add_data(data)
+qr.make(fit=True)
+
+# ایجاد تصویر QR کد
+img = qr.make_image(fill='black', back_color='white')
+
+# ذخیره تصویر
+img.save("qrcode_example.png")
+
